@@ -1,18 +1,25 @@
 Package: monotone
 Type: Package
-Title: Test/check/verify/investige the monotonic properties of numeric vectors
-Version: 0.2
-Date: 2014-06-07
+Title: Test, Check, Verify, Investigate the Monotonic Properties of Numeric 
+    Vectors
+Version: 0.3.0
+Date: 2017-09-10
 Author: Christopher Brown
 Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
-Description: More about what it does (maybe more than one line)
+Description: This package provides several functions for testining, checking, 
+    verify and investigating the monotonic properties of numeric vectors. 
+    Function 'monotonicity' gives the monotonic properties while a family of 
+    'is_*' function can be used to test if the numeric vector is (strictly) 
+    increasing, decreasing, neither or constant. 
 Suggests:
-    testthat
+    testthat,
+    na.actions (>= 0.7.2)
 License: GPL (>= 2)
 URL: https://github.com/decisionpatterns/monotone
 BugReports: https://github.com/decisionpatterns/monotone/issues
-Collate:
+Collate: 
     'monotone-package.R'
     'zero.action.R'
     'monotonicity.R'
-    'replace.range.R'
+    'monotonicity_tests.R'
+RoxygenNote: 6.0.1.9000
