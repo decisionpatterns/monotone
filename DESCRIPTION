@@ -22,4 +22,6 @@ Collate:
     'zero.action.R'
     'monotonicity.R'
     'monotonicity_tests.R'
+    'is_incremental.R'
+    'zzz.R'
 RoxygenNote: 6.0.1.9000

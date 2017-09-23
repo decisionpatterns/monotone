@@ -4,7 +4,7 @@
 #' 
 #' @description 
 #' 
-#' Determines the monotonicity of a numeric vector 
+#' Access the monotonicity of a numeric vector 
 #' 
 #' @param x numeric vector
 #' @param na.action function to handle \code{NA} values 
@@ -12,7 +12,9 @@
 #' @param ... additional arguments passed to \code{na.action}
 #' 
 #' @details 
-#' \code{monotonicty} determines the monotonicy of a numeric vector as one of:
+#' 
+#' \code{monotonicty} determines the monotonicy (first derivative) of a numeric 
+#' vector as one of:
 #' 
 #'  - stictly increasing, 
 #'  - increasing / montonically increasing / non-decreasing, 

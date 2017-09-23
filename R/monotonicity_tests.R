@@ -6,6 +6,9 @@
 #' non-decreasing, non-increasing, constant properties
 #' 
 #' @param x numeric vector or one that can be coerced to one.
+#' @param na.action function or NULL; action to perform on input to handle the
+#'        missing values
+#' @param step integer; step-size for increment or NULL; See details.
 #' 
 #' @details 
 #' 
@@ -31,6 +34,9 @@
 #' @export
 
 is_increasing <- function(x, na.action=na.omit, zero.action=zero.pass) { 
+  
+  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
+  
   x <- na.action( zero.action(x) ) 
   all( x == cummax(x) )
 
@@ -49,6 +55,7 @@ is.increasing <- function(...) {
 #' @export 
 is_decreasing <- function(x, na.action=na.omit, zero.action=zero.pass) { 
  
+  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
   x. <- na.action( zero.action(x) ) 
   all( x == cummin(x) )
 
@@ -67,7 +74,9 @@ is.decreacing <- function(...) {
 #' @export
 
 is_constant <- function( x, na.action=na.omit ) {
+  
   if( all( is.na(x) ) ) return(NA)
+  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
   
   if( ! is.null(na.action) ) x <- na.action(x)
   
@@ -87,6 +96,8 @@ is.constant <- function(...) {
 is_strictly_increasing <- function( x, na.action=na.omit ) {
   
   if( all( is.na(x) ) ) return(NA)
+  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
+  
   if( ! is.null(na.action) ) x <- na.action(x)
   
   all( diff(x) > 0 )
@@ -94,13 +105,34 @@ is_strictly_increasing <- function( x, na.action=na.omit ) {
 }
   
 
+
+
+
+
 #' @rdname tests
 #' @export 
 is_strictly_decreasing <- function ( x, na.action=na.omit ) {
     
   if( all( is.na(x) ) ) return(NA)
+  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
+  
   if( ! is.null(na.action) ) x <- na.action(x)
   
   all( diff(x) < 0 )
   
 }
+
+
+#' @rdname tests
+#' @export 
+is_monotonoc <- function(x, na.action=na.omit ) 
+  is_increasing(x,na.action) || is_decreasing(x,na.actions)
+
+
+
+#' @rdname tests
+#' @export 
+is_strictly_monotonic <- function(x, na.action=na.omit) 
+  is_strictly_increasing(x,na.action) || is_strictly_decreasing(x,na.actions)
+  
+

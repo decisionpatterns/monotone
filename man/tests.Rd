@@ -9,6 +9,8 @@
 \alias{is.constant}
 \alias{is_strictly_increasing}
 \alias{is_strictly_decreasing}
+\alias{is_monotonoc}
+\alias{is_strictly_monotonic}
 \title{Monotonicity tests}
 \usage{
 is_increasing(x, na.action = na.omit, zero.action = zero.pass)
@@ -26,9 +28,18 @@ is.constant(...)
 is_strictly_increasing(x, na.action = na.omit)
 
 is_strictly_decreasing(x, na.action = na.omit)
+
+is_monotonoc(x, na.action = na.omit)
+
+is_strictly_monotonic(x, na.action = na.omit)
 }
 \arguments{
 \item{x}{numeric vector or one that can be coerced to one.}
+
+\item{na.action}{function or NULL; action to perform on input to handle the
+missing values}
+
+\item{step}{integer; step-size for increment or NULL; See details.}
 }
 \value{
 logical or NA

@@ -26,10 +26,11 @@ integer;
 }
 }
 \description{
-Determines the monotonicity of a numeric vector
+Access the monotonicity of a numeric vector
 }
 \details{
-\code{monotonicty} determines the monotonicy of a numeric vector as one of:
+\code{monotonicty} determines the monotonicy (first derivative) of a numeric
+vector as one of:
 \itemize{
 \item stictly increasing,
 \item increasing / montonically increasing / non-decreasing,
