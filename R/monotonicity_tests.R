@@ -23,13 +23,14 @@
 #'   
 #'   is.constant( c(1,2,3) )
 #'   is.constant( rep(3,5) )
-#' @examples
+#' 
 #'   is_increasing( 1:10 )                  # TRUE
 #'   is_increasing( c(1,2,1,3) )            # FALSE
 #'   
 #'   is_increasing( c(1,NA,2,3) )           # NA 
 #'   is_increasing( c(1,NA,2,3), na.omit )  # TRUE
 #' 
+#' @import na.actions
 #' @rdname tests
 #' @export
 

@@ -57,6 +57,7 @@ stackoverflow reference for timings and an explanation.
   
   is.constant( c(1,2,3) )
   is.constant( rep(3,5) )
+
   is_increasing( 1:10 )                  # TRUE
   is_increasing( c(1,2,1,3) )            # FALSE
   
