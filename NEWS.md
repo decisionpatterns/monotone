@@ -1,5 +1,7 @@
+# monotone 0.4.0 
 
-
+ - Break apart code into smaller files
+ - Fix spelling monotonoc
  - add is_monotonic and is_strictly_monotonic
 
 # monotone 0.3.0

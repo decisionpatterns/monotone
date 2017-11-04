@@ -21,16 +21,22 @@
 #'   
 #' @examples 
 #'   
-#'   is.constant( c(1,2,3) )
-#'   is.constant( rep(3,5) )
+#'   is_constant( c(1,2,3) )
+#'   is_constant( rep(3,5) )
 #' 
-#'   is_increasing( 1:10 )                  # TRUE
+#'   is_increasing( 1:5 )                   # TRUE
 #'   is_increasing( c(1,2,1,3) )            # FALSE
 #'   
 #'   is_increasing( c(1,NA,2,3) )           # NA 
 #'   is_increasing( c(1,NA,2,3), na.omit )  # TRUE
-#' 
+#'
+#'   is_monotonic( 1:5 )                    # TRUE
+#'   is_monotonic( -5:5 )                   # TRUE
+#'   is_monotonic( 5:-5 )                   # TRUE
+#'   is_monotonic( c(1,5,3))                # FALSE
+#'   
 #' @import na.actions
+#' @rdname tests
 #' @rdname tests
 #' @export
 
@@ -71,26 +77,6 @@ is.decreacing <- function(...) {
    
 
 
-#' @rdname tests
-#' @export
-
-is_constant <- function( x, na.action=na.omit ) {
-  
-  if( all( is.na(x) ) ) return(NA)
-  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
-  
-  if( ! is.null(na.action) ) x <- na.action(x)
-  
-  all( x == x[1] )
-}
-
-
-#' @rdname tests
-#' @export 
-is.constant <- function(...) { 
-  warning( "'is.constant' will be removed. Use 'is_constant' instead.")  
-}
-
 
 #' @rdname tests
 #' @export 
@@ -106,10 +92,6 @@ is_strictly_increasing <- function( x, na.action=na.omit ) {
 }
   
 
-
-
-
-
 #' @rdname tests
 #' @export 
 is_strictly_decreasing <- function ( x, na.action=na.omit ) {
@@ -122,18 +104,3 @@ is_strictly_decreasing <- function ( x, na.action=na.omit ) {
   all( diff(x) < 0 )
   
 }
-
-
-#' @rdname tests
-#' @export 
-is_monotonoc <- function(x, na.action=na.omit ) 
-  is_increasing(x,na.action) || is_decreasing(x,na.actions)
-
-
-
-#' @rdname tests
-#' @export 
-is_strictly_monotonic <- function(x, na.action=na.omit) 
-  is_strictly_increasing(x,na.action) || is_strictly_decreasing(x,na.actions)
-  
-

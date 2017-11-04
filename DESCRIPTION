@@ -2,8 +2,8 @@ Package: monotone
 Type: Package
 Title: Test, Check, Verify, Investigate the Monotonic Properties of Numeric 
     Vectors
-Version: 0.3.1
-Date: 2017-11-03
+Version: 0.4.0
+Date: 2017-11-04
 Author: Christopher Brown
 Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
 Description: This package provides several functions for testining, checking, 
@@ -18,12 +18,5 @@ Imports:
 License: GPL (>= 2)
 URL: https://github.com/decisionpatterns/monotone
 BugReports: https://github.com/decisionpatterns/monotone/issues
-Collate: 
-    'monotone-package.R'
-    'zero.action.R'
-    'monotonicity.R'
-    'monotonicity_tests.R'
-    'is_incremental.R'
-    'zzz.R'
 RoxygenNote: 6.0.1.9000
 Repository: CRAN
