@@ -59,14 +59,15 @@ stackoverflow reference for timings and an explanation.
   is_constant( c(1,2,3) )
   is_constant( rep(3,5) )
 
-  is_increasing( 1:10 )                  # TRUE
+  is_increasing( 1:5 )                   # TRUE
   is_increasing( c(1,2,1,3) )            # FALSE
   
   is_increasing( c(1,NA,2,3) )           # NA 
   is_increasing( c(1,NA,2,3), na.omit )  # TRUE
 
-  is_monotonic( 1:5 )
-  is_monotonic( -5:5 )
-  is_monotonic( 5:-5 )
+  is_monotonic( 1:5 )                    # TRUE
+  is_monotonic( -5:5 )                   # TRUE
+  is_monotonic( 5:-5 )                   # TRUE
+  is_monotonic( c(1,5,3))                # FALSE
   
 }

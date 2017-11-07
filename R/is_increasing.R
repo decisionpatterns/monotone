@@ -35,14 +35,18 @@
 #'   is_monotonic( 5:-5 )                   # TRUE
 #'   is_monotonic( c(1,5,3))                # FALSE
 #'   
-#' @import na.actions
+#' @import na.actions 
+#' @importFrom coercion can_be
 #' @rdname tests
 #' @rdname tests
 #' @export
 
 is_increasing <- function(x, na.action=na.omit, zero.action=zero.pass) { 
   
-  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
+  # if( ! coercion::can_be(x, "numeric") )
+  # stop( call. = FALSE "monotonicity can only be determined for numeric vectors.")
+  
+  x <- as.numeric(x)
   
   x <- na.action( zero.action(x) ) 
   all( x == cummax(x) )
