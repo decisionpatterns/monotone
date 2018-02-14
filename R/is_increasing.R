@@ -18,7 +18,10 @@
 #'
 #' @return 
 #'   logical or NA 
-#'   
+#'
+#' @seealso 
+#'  * [base::diff()]
+#'  
 #' @examples 
 #'   
 #'   is_constant( c(1,2,3) )
@@ -43,15 +46,11 @@
 
 is_increasing <- function(x, na.action=na.omit, zero.action=zero.pass) { 
   
-  # if( ! coercion::can_be(x, "numeric") )
-  # stop( call. = FALSE "monotonicity can only be determined for numeric vectors.")
-  
-  x <- as.numeric(x)
-  
   x <- na.action( zero.action(x) ) 
-  all( x == cummax(x) )
+  all( x[2:length(x)] >= x[1:(length(x)-1)] )
 
 } 
+
 
 #' @rdname tests
 #' @export 
@@ -66,10 +65,9 @@ is.increasing <- function(...) {
 #' @export 
 is_decreasing <- function(x, na.action=na.omit, zero.action=zero.pass) { 
  
-  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
-  x. <- na.action( zero.action(x) ) 
-  all( x == cummin(x) )
-
+  x <- na.action( zero.action(x) ) 
+  all( x[2:length(x)] <= x[1:(length(x)-1)] )
+  
 } 
 
 #' @rdname tests

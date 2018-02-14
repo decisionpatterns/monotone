@@ -2,8 +2,8 @@ Package: monotone
 Type: Package
 Title: Test, Check, Verify, Investigate the Monotonic Properties of Numeric 
     Vectors
-Version: 0.4.1
-Date: 2017-11-05
+Version: 0.5.1
+Date: 2018-02-14
 Author: Christopher Brown
 Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
 Description: This package provides several functions for testining, checking, 

@@ -1,4 +1,4 @@
 library(testthat)
 library(monotone)
 
-test_package( "monotone" )
+test_check("monotone")

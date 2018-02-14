@@ -23,3 +23,4 @@ zero.replace <- function( object, value, ... ) {
   object[ object == 0 ] <- value 
   return(object)
 }
+
