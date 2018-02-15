@@ -38,18 +38,36 @@
 #'   is_monotonic( 5:-5 )                   # TRUE
 #'   is_monotonic( c(1,5,3))                # FALSE
 #'   
+#'   
+#'   
 #' @import na.actions 
 #' @importFrom coercion can_be
 #' @rdname tests
 #' @rdname tests
 #' @export
 
-is_increasing <- function(x, na.action=na.omit, zero.action=zero.pass) { 
+is_increasing <- function(x, na.action=na.omit ) { 
   
-  x <- na.action( zero.action(x) ) 
+  if( all( is.na(x) ) ) return(NULL)
+
+  x <- na.action(x) 
   all( x[2:length(x)] >= x[1:(length(x)-1)] )
 
 } 
+
+
+#' @rdname tests
+#' @export 
+is_strictly_increasing <- function( x, na.action=na.omit ) {
+
+  if( all( is.na(x) ) ) return(NA)
+  
+
+  x <- na.action(x) 
+  all( x[2:length(x)] > x[1:(length(x)-1)] )  # strictly increasing
+  
+}
+
 
 
 #' @rdname tests
@@ -63,9 +81,9 @@ is.increasing <- function(...) {
 
 #' @rdname tests
 #' @export 
-is_decreasing <- function(x, na.action=na.omit, zero.action=zero.pass) { 
+is_decreasing <- function(x, na.action=na.omit ) { 
  
-  x <- na.action( zero.action(x) ) 
+  x <- na.action(x) 
   all( x[2:length(x)] <= x[1:(length(x)-1)] )
   
 } 
@@ -80,18 +98,7 @@ is.decreacing <- function(...) {
 
 
 
-#' @rdname tests
-#' @export 
-is_strictly_increasing <- function( x, na.action=na.omit ) {
-  
-  if( all( is.na(x) ) ) return(NA)
-  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
-  
-  if( ! is.null(na.action) ) x <- na.action(x)
-  
-  all( diff(x) > 0 )
-  
-}
+
   
 
 #' @rdname tests

@@ -9,11 +9,12 @@ is_constant <- function( x, na.action=na.omit ) {
   if( ! is.null(na.action) ) x <- na.action(x)
   
   all( x == x[1] )
+  
 }
 
 
-#' @rdname tests
-#' @export 
-is.constant <- function(...) { 
-  warning( "'is.constant' will be removed. Use 'is_constant' instead.")  
-}
+#' #' @rdname tests
+#' #' @export 
+#' is.constant <- function(...) { 
+#'   warning( "'is.constant' will be removed. Use 'is_constant' instead.")  
+#' }

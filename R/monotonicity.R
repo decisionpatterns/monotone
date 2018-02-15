@@ -49,9 +49,9 @@
 #' @rdname monotonicity
 #' @export
 
-monotonicity <- function( x, na.action=na.omit, zero.action=I, ... ) { 
+monotonicity <- function( x, na.action=na.omit, ... ) { 
   
-  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
+  # if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
   
   x <- na.action(x)
   x. <- diff( x )
