@@ -7,9 +7,10 @@
 #' Access the monotonicity of a numeric vector 
 #' 
 #' @param x numeric vector
-#' @param na.action function to handle \code{NA} values 
-#' (default:\code{\link[stats]{na.omit}})
-#' @param ... additional arguments passed to \code{na.action}
+#' @param na.rm logical; whether to omit `NA` values. (Default: TRUE)
+# @param na.action function to handle \code{NA} values 
+# (default:\code{\link[stats]{na.omit}})
+# @param ... additional arguments passed to \code{na.action}
 #' 
 #' @details 
 #' 
@@ -31,8 +32,7 @@
 #'   - **0** : not-monotone 
 #'   - **-1**: decreasing / monotonically decreasing / non-increasing 
 #'   - **-2**: strictly decreasing 
-#'   - **`NA`**:` contains only `NA`s all `na.action` did not 
-#'      resolve all `NA`s 
+#'   - **`NA`**:` contains only `NA`s all `na.rm` did not resolve all `NA`s 
 #'
 #' @references
 #'   http://en.wikipedia.org/wiki/Monotonic_function
@@ -49,11 +49,12 @@
 #' @rdname monotonicity
 #' @export
 
-monotonicity <- function( x, na.action=na.omit, ... ) { 
+monotonicity <- function( x, na.rm=TRUE ) { 
   
   # if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
   
-  x <- na.action(x)
+  if( na.rm ) x <- na.omit(x)
+  
   x. <- diff( x )
   
   # EXCEPTIONS:

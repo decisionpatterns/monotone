@@ -2,11 +2,7 @@
 
 **Test, Check, Verify, Investigate the Monotonic Properties of Numeric Vectors**
 
-This package provides several efficient functions for testining, checking, 
-verify and investigating the monotonic properties of numeric vectors. 
-Function **monotonicity** gives the monotonic properties of the vector, while 
-a family of 'is_*' function can be used to test if a numeric vector is 
-(strictly) increasing, decreasing, neither or constant. 
+**monotone** provides several functions for testing/checking/verify/investigating the monotonic properties of vectors. The 'is_[strictly_]*' family of functions test vectors for 'monotonic', 'increasing', 'decreasing', 'sorted' properties; 'is_constant' and 'is_incremental' test for the degree of monotonicity. `monotoniciy` reports the degree of monotonicty.   
 
 ## install 
 
@@ -18,16 +14,26 @@ Install using the standard methods
      
     devtools::install_github( "decisionpatterns/monotone")
 
+
 ## Usage 
 
+The usage of the packages is probably best demonstrated by a few examples:
+
     x <- 1:5
-    monotoniciy(x)   
-     
-    is_increasing(x)  
+    is_monotonic(x) # TRUE
+    is_strictly_monotonic(x) # TRUE
     
-
-### monotonicity
-
-
-### is_*
-
+    is_increasing(x) # TRUE    
+    is_strictly_increasing(x) # TRUE
+    
+    is_decreasing(x) # FALSE
+    is_strictly_decreasing(x) # FALSE
+    
+    is_sorted(x) # TRUE
+    is_strictly_sorted(x) # TRUE 
+    
+    is_constant(x) # FALSE
+    is_incremental() # TRUE
+    
+    monotonicity(x)  #  2 - strictly increasing
+    

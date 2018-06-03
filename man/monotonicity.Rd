@@ -4,15 +4,12 @@
 \alias{monotonicity}
 \title{monotonicity}
 \usage{
-monotonicity(x, na.action = na.omit, zero.action = I, ...)
+monotonicity(x, na.rm = TRUE)
 }
 \arguments{
 \item{x}{numeric vector}
 
-\item{na.action}{function to handle \code{NA} values
-(default:\code{\link[stats]{na.omit}})}
-
-\item{...}{additional arguments passed to \code{na.action}}
+\item{na.rm}{logical; whether to omit \code{NA} values. (Default: TRUE)}
 }
 \value{
 integer;
@@ -22,7 +19,7 @@ integer;
 \item \strong{0} : not-monotone
 \item \strong{-1}: decreasing / monotonically decreasing / non-increasing
 \item \strong{-2}: strictly decreasing
-\item \strong{\code{NA}}:\code{contains only}NA\code{s all}na.action\code{did not resolve all}NA`s
+\item \strong{\code{NA}}:\code{contains only}NA\code{s all}na.rm\code{did not resolve all}NA`s
 }
 }
 \description{

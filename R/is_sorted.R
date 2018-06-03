@@ -1,32 +1,32 @@
-#' is_sorted
-#' 
-#' detemines whether a vector is sorted.
-#' 
-#' @param x 
-#' @param decreasing logical; whether the sorting is de
 #' @details 
 #' 
-#' Returns `TRUE` if `x` is sorted.
+#' [is_sorted()] is a alias for [is_monotonic()] and [is_strictly_sorted()] is
+#' an alias for [is_strictly_monotonic()].
 #' 
-#' @seealso
-#'  
-#'   - [is_increasing()]
-#'   - [base::is.unsorted()]
-#'   
-#' @examples 
-#' 
-#'   is_sorted(1:10)
-#'   is_sorted(-5:5)
-#'   is_sorted(5:-5)
-#'   
-#'   is_sorted( letters )
-#'   is_sorted( rev(letters) )
-#'   
+#' @rdname tests
 #' @md
 #' @export   
 
-is_sorted <- function(x) {
- 
-  all( x == sort(x) ) || all( x == sort(x) )
+is_sorted <- is_monotonic
 
-}
+
+#' @rdname tests
+#' @md
+#' @export   
+
+is_strictly_sorted <- is_strictly_monotonic
+
+
+#' @rdname tests
+#' @md
+#' @export   
+
+is_unsorted <- function(...) ! is_monotonic(...) 
+
+
+#' @rdname tests
+#' @md
+#' @export  
+
+is_strictly_unsorted <- function(...) ! is_strictly_monotonic(...) 
+

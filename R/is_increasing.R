@@ -1,30 +1,29 @@
-#' @title Monotonicity tests
+#' @title Monotonicity Tests
 #' 
 #' @description 
 #' 
-#' Test numeric vector for increasing, decreasing, strictly increasing, 
-#' non-decreasing, non-increasing, constant properties
+#' Tests vectors for (strictly) increasing, decreasing, monotonic and 
+#' constant properties 
 #' 
-#' @param x numeric vector or one that can be coerced to one.
-#' @param na.action function or NULL; action to perform on input to handle the
+#' @param x vector
+#' @param na.rm function or NULL; action to perform on input to handle the
 #'        missing values
-#' @param step integer; step-size for increment or NULL; See details.
+#' 
+#' @param ... used for passing default arguments 
 #' 
 #' @details 
 #' 
-#' Instead of  using diff, \code{is_increasing} and \code{is_decreasing} uses 
-#' \code{cummax} and \code{cummin} respectively for efficiency. See the 
-#' stackoverflow reference for timings and an explanation.
+#' Tests to various monotone properties of vectors. 
 #'
 #' @return 
-#'   logical or NA 
+#'   logical or NA. (NB: NA is returned because it is a logical vector and this is 
+#'   needed to put these results cleanly in tables.) 
 #'
 #' @seealso 
 #'  * [base::diff()]
 #'  
 #' @examples 
 #'   
-#'   is_constant( c(1,2,3) )
 #'   is_constant( rep(3,5) )
 #' 
 #'   is_increasing( 1:5 )                   # TRUE
@@ -38,78 +37,28 @@
 #'   is_monotonic( 5:-5 )                   # TRUE
 #'   is_monotonic( c(1,5,3))                # FALSE
 #'   
-#'   
-#'   
-#' @import na.actions 
-#' @importFrom coercion can_be
-#' @rdname tests
 #' @rdname tests
 #' @export
 
-is_increasing <- function(x, na.action=na.omit ) { 
+is_increasing <- function(x, na.rm=TRUE ) 
+  ! base::is.unsorted(x, na.rm=TRUE, strictly=FALSE ) 
   
-  if( all( is.na(x) ) ) return(NULL)
-
-  x <- na.action(x) 
-  all( x[2:length(x)] >= x[1:(length(x)-1)] )
-
-} 
 
 
 #' @rdname tests
 #' @export 
-is_strictly_increasing <- function( x, na.action=na.omit ) {
-
-  if( all( is.na(x) ) ) return(NA)
-  
-
-  x <- na.action(x) 
-  all( x[2:length(x)] > x[1:(length(x)-1)] )  # strictly increasing
-  
-}
-
-
-
-#' @rdname tests
-#' @export 
-is.increasing <- function(...) { 
-  warning( "is.increasing is deprecated, use is_increasing instead")  
-  is_decreasing(...)
-}
-   
-
-
-#' @rdname tests
-#' @export 
-is_decreasing <- function(x, na.action=na.omit ) { 
- 
-  x <- na.action(x) 
-  all( x[2:length(x)] <= x[1:(length(x)-1)] )
-  
-} 
-
-#' @rdname tests
-#' @export 
-is.decreacing <- function(...) { 
-  warning( "is.decreasing is deprecated, use is_decreasing instead")  
-  is_decreasing(...)
-}
-   
-
-
-
-
+is_strictly_increasing <- function( x, na.rm=na.omit ) 
+  ! base::is.unsorted(x, na.rm=TRUE, strictly=TRUE )
   
 
 #' @rdname tests
 #' @export 
-is_strictly_decreasing <- function ( x, na.action=na.omit ) {
-    
-  if( all( is.na(x) ) ) return(NA)
-  if( ! is.numeric(x) ) stop( "monotonicity can only be determined for numeric vectors.")
+is_decreasing <- function(x, na.rm=na.omit ) 
+  ! base::is.unsorted( rev(x), na.rm=TRUE, strictly=FALSE ) 
   
-  if( ! is.null(na.action) ) x <- na.action(x)
+
+#' @rdname tests
+#' @export 
+is_strictly_decreasing <- function ( x, na.rm=na.omit ) 
+  ! base::is.unsorted( rev(x), na.rm=TRUE, strictly=TRUE )
   
-  all( diff(x) < 0 )
-  
-}
