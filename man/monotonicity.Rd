@@ -19,7 +19,7 @@ integer;
 \item \strong{0} : not-monotone
 \item \strong{-1}: decreasing / monotonically decreasing / non-increasing
 \item \strong{-2}: strictly decreasing
-\item \strong{\code{NA}}:\code{contains only}NA\code{s all}na.rm\code{did not resolve all}NA`s
+\item \strong{\code{NA}}:\verb{contains only}NA\verb{s all }na.rm\verb{did not resolve all}NA`s
 }
 }
 \description{

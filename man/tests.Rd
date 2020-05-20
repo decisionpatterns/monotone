@@ -71,7 +71,7 @@ spaced.
 
 \code{is_uniform} is a wrapper around \code{is_incremental} with \code{step=NULL}
 
-\code{is_[strictly_]monotonic} determine the sort properties of \code{x}.
+\verb{is_[strictly_]monotonic} determine the sort properties of \code{x}.
 
 This differes from \code{\link[base:is.unsorted]{base::is.unsorted()}} which should more properly be called
 \code{is.increasing} since \code{base::is.unsorted(3:1) == TRUE}; \code{3:1} is obviously
